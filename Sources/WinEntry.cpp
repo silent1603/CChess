@@ -36,6 +36,28 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmd
     windowClass.style = CS_VREDRAW | CS_HREDRAW;
     windowClass.cbClsExtra = 0;
     windowClass.cbWndExtra = 0;
+    windowClass.hIcon = LoadIcon(hInst,IDI_APPLICATION);
+    windowClass.hIconSm = LoadIcon(hInst,IDI_WINLOGO);
+    windowClass.hCursor = LoadIcon(hInst,IDC_ARROW);
+    windowClass.hbrBackground = NULL;
+    windowClass.lpszMenuName = NULL;
+    windowClass.lpszClassName = L"SandBox";
+
+    RegisterClassEx(&windowClass);
+    
+    //Create Window
+    HWND window = CreateWindowEx(NULL, 
+        L"Sandbox",
+        L"TinySandBox",
+        WS_OVERLAPPEDWINDOW | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
+        0,0,
+        200,200,
+        NULL,
+        NULL,
+        hInst,
+        NULL);
+
+    ShowWindow(window, cmdshow);
 
     return 0;
 }
